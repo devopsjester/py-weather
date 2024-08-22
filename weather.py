@@ -3,15 +3,18 @@ import requests
 import os
 
 def get_city_state(zipcode):
-    response = requests.get(f"http://api.zippopotam.us/us/{zipcode}")
-    if response.status_code == 200:
+    try:
+        response = requests.get(f"http://api.zippopotam.us/us/{zipcode}")
+        response.raise_for_status()  # Raise an HTTPError for bad responses
         data = response.json()
-        city = data['places'][0]['place name']
-        state = data['places'][0]['state abbreviation']
-        latitude = data['places'][0]['latitude']
-        longitude = data['places'][0]['longitude']
+        
+        city = data['places'][0].get('place name', None)
+        state = data['places'][0].get('state abbreviation', None)
+        latitude = data['places'][0].get('latitude', None)
+        longitude = data['places'][0].get('longitude', None)
+        
         return city, state, latitude, longitude
-    else:
+    except (requests.RequestException, KeyError, IndexError):
         return None, None, None, None
 
 def get_temperature(latitude, longitude, api_key):
