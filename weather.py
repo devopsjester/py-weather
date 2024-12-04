@@ -23,23 +23,14 @@ def get_lat_long(zip_code):
 
 # Function to get weather conditions and temperature based on latitude and longitude
 def get_weather_conditions(latitude, longitude):
-    # Access the API key from environment variable
-    API_KEY = os.getenv("OPENWEATHERMAP_API_KEY")
-    # Check if API key is not set
-    if not API_KEY:
-        return "API key for OpenWeatherMap is not set."
-    # API endpoint for getting weather data, using imperial units for Fahrenheit
-    url = f"http://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={API_KEY}&units=imperial"
+    # API endpoint for getting weather data from wttr.in
+    url = f"http://wttr.in/{latitude},{longitude}?format=%C+%t"
     # Send a GET request to the API
     response = requests.get(url)
     # If the request is successful
     if response.status_code == 200:
-        data = response.json()
-        # Extract weather conditions and temperature from the response
-        weather_conditions = data["weather"][0]["description"]
-        temperature = data["main"]["temp"]
         # Return weather conditions and temperature
-        return f"Weather Conditions: {weather_conditions}, Temperature: {temperature}°F"
+        return response.text.strip()
     else:
         # Return error message if the request fails
         return "Weather conditions could not be retrieved."
