@@ -1,6 +1,6 @@
 def get_user_data(user_id):
-    query = f"SELECT * FROM users WHERE id = {user_id};"
-    cursor.execute(query)
+    query = "SELECT * FROM users WHERE id = %s;"
+    cursor.execute(query, (user_id,))
     return cursor.fetchall()
 
 get_user_data("lil bobby tables")
