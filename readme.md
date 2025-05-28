@@ -56,38 +56,30 @@ Before you get started, open the sidebar chat and ask  Copilot for "help on Copi
 # Prompts
 Using the Copilot Chat interface, enter the following prompt:
 ```
-Write an app that takes the zipcode as an argument, and gets the city and state from it, using zipopotam.us.
+Write an app in Python, using Click CLI, that takes the zipcode as an argument, and gets the city and state from it, using zipopotam.us.
+
+The app should be called like "./weather where-is --zipcode 12345".
+
+Response should look like "Zipcode <zipcode> is in <city>, <state>."
 ```
 > zipopotam.us is a free public API that can return the city and state based on a zipcode.
-
-Call the function you created using a zipcode passed in from the command line argument.
-
-Example prompt:
-```
-Get the zipcode from the command line argument.
-```
-> Use the inline chat to add this under the function you created before.
 
 Get the weather for the city and state you found.
 Use the sidebar chat interface to create a function that will get the temperature, in degrees Fahrenheit, for the city and state.
 Use a prompt such as:
 ```
-Get the temperature for the city and state, using the openweathermap.org API in imperial units.
-```
-> The openweathermap.org API is also public and free. You will, however, have to register for it, and create an API key to use for the application. Make sure to replace any variable or constant with your actual API key.
+Get the temperature for the city and state, using the open-meteo weather API, in imperial units.
 
-Highlight the main code that calls the function that gets the city and state, which you've created above (or create it now, if it doesn't exist yet), and use Copilot to also add a call to the function that gets the temperature.
+The app sub-command for weather should be called like "./weather get-temp --zipcode 12345".
 
-An example prompt might look something like:
+This sub command should leverage existing functionality. Its output should look like "It is <temperature>ºF in <city>, <state>."
 ```
-Change the code to get the city and state from the zip code, and then get the temperature in Farenheit. Print the temperature in the city.
-```
-
-If everything worked so far, you should be able to call your app with a command like: `python weather-app 10001`, and get a result similar to `The temperature in New York City is 74.32 degrees Farenheit.`
 
 # More things you can try.
 In the sidebar, you can ask Copilot to `/explain` a block of code or the entire page to you. If you have errors, you can highlight a code block, and ask Copilot to `/fix` it for you. Consider mentioning a specific error message to help it figure out the context.
 You can even use `/tests` to add unit tests for a selected block of code.
+
+You can try to create a GitHub Actions workflow for the app.
 
 ## Further tasks
 - Try to add support for both Celsius and Farenheit units of measurement. Try creating a default behavior. Create a clear and explicit prompt to help Copilot understand what you're trying to do.
