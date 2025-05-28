@@ -12,47 +12,6 @@ The first thing you will want to do is create a new repo. Create a repo. Name th
 
 Add a `.gitignore` appropriate to your chosen language. You may add a readme file for your convenience. 
 
-# Codespaces
-Once you've created a repo, you will want to create a Codespace within which to work. To do so, first, you will want to create a configuration file. 
-
-Add a new file in GitHub/.devcontainer/devcontainer.json.
-
-Below, is an example devcontainer file for Python:
-```
-{
-	"name": "Python 3",
-	"image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye",
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"GitHub.copilot",
-				"GitHub.copilot-chat"
-			]
-		}
-	}
-}
-```
-Commit the file to the main branch.
-
-Next, create a new Codespace; click on the green `Code` button, and click on the `Codespaces` tab. Click `Create Codespace on main`. 
-
-This will open visual studio code.
-
-# Copilot Primer
-## Getting started
-If you set up the `devcontainer.json` file properly, the *Copilot* and *Copilot-Chat* extensions will be added automatically (see the toolbar on the left). You will need to log into Copilot with your GitHub username.
-
-## Combine Workflows
-Make the most out of Copilot by mixing up different workflows:
-- Write code faster with Copilot suggestions in the editor.
-- Rewrite blocks of code with the interactive editor session.
-- Ask questions and iterate on bigger problems in the chat.
-
-## Tips
-Use the Control-Shift-P (Command-Shift-P on a Mac) keyboard shortcut in VSCode and type 'copilot' to find the commands you can run in the editor. Commands with keyboard shortcuts will have those marked to the right of the individual commands.
-
-Before you get started, open the sidebar chat and ask  Copilot for "help on Copilot", to get started. 
-
 # Prompts
 Using the Copilot Chat interface, enter the following prompt:
 ```
